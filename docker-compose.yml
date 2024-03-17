@@ -2,7 +2,7 @@ version: '3'
 
 services:
   planka:
-    image: https://github.com/aquatic7/kanban-tgh/releases/tag/tgh-kanban:latest
+    image: git@github.com:aquatic7/kanban-tgh.git:latest
     restart: on-failure
     volumes:
       - user-avatars:/app/public/user-avatars
