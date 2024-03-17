@@ -2,7 +2,7 @@ version: '3'
 
 services:
   planka:
-    build: git@github.com:aquatic7/kanban-tgh.git
+    image: git@github.com:aquatic7/kanban-tgh.git
     restart: always
     volumes:
       - user-avatars:/app/public/user-avatars
