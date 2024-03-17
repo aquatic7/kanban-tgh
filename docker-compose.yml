@@ -3,7 +3,7 @@ version: '3'
 services:
   planka:
     build: git@github.com:aquatic7/kanban-tgh.git
-    restart: on-failure
+    restart: always
     volumes:
       - user-avatars:/app/public/user-avatars
       - project-background-images:/app/public/project-background-images
@@ -12,8 +12,9 @@ services:
       - 3000:1337
     environment:
       - BASE_URL=http://localhost:3000
-      - DATABASE_URL=postgresql://postgres@postgres/planka
-      - SECRET_KEY=notsecretkey
+      - DATABASE_URL=postgresql://postgres@postgres/tgh-kanban
+      - SECRET_KEY=603c9a051af0c90eddf14b461633758db1ed236c28434ed7097b5ca624b59fbdd4601f66f05f512632a40e24a5c1d26cd2d6fbf6e016b63be83122b2d825cc82
+
 
       # - TRUST_PROXY=0
       # - TOKEN_EXPIRES_IN=365 # In days
@@ -53,10 +54,10 @@ services:
     volumes:
       - db-data:/var/lib/postgresql/data
     environment:
-      - POSTGRES_DB=planka
+      - POSTGRES_DB=tgh-kanban
       - POSTGRES_HOST_AUTH_METHOD=trust
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres -d planka"]
+      test: ["CMD-SHELL", "pg_isready -U postgres -d tgh-kanban"]
       interval: 10s
       timeout: 5s
       retries: 5
